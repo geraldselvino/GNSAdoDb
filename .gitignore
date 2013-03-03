@@ -55,7 +55,7 @@ local.properties
 *.pgd
 *.rsp
 *.sbr
-*.tlb
+#*.tlb
 *.tli
 *.tlh
 *.tmp
