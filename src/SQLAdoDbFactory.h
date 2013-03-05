@@ -19,8 +19,8 @@ namespace GNSAdoDb{
          * using this class' pointer
          */
         virtual ~SQLAdoDbFactory(){
-			delete m_AdoDb;
-		}
+            delete m_AdoDb;
+        }
 
     private:
         /**
@@ -32,11 +32,11 @@ namespace GNSAdoDb{
                                  const std::string& pHost, const std::string& pPort)
         {
             m_AdoDb = new CSQLAdoDb(pDatabase, pUserName, pPassword, pHost, pPort);
-			return m_AdoDb;
+            return m_AdoDb;
         }
 
-	private:
-		IAdoDb* m_AdoDb;
+    private:
+        IAdoDb* m_AdoDb;
 
     };
 }

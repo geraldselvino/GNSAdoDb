@@ -13,8 +13,8 @@ namespace GNSAdoDb{
     /**
      * Return type of the factory method,
      * forward declared since we don't need
-	 * to know its layout, we just use a pointer
-	 * of its type
+     * to know its layout, we just use a pointer
+     * of its type
      */   
     class IAdoDb;
 

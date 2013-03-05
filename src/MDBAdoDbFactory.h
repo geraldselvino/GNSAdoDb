@@ -12,7 +12,7 @@
 namespace GNSAdoDb{
 
     class MDBAdoDbFactory: public AdoDbFactory
-	: m_AdoDb(NULL)
+    : m_AdoDb(NULL)
     {
     public:
         /**
@@ -20,8 +20,8 @@ namespace GNSAdoDb{
          * using this class' pointer
          */
         virtual ~MDBAdoDbFactory(){
-			delete m_AdoDb;
-		}
+            delete m_AdoDb;
+        }
 
     private:
         /**
@@ -33,11 +33,11 @@ namespace GNSAdoDb{
                                  const std::string& pMDWPassword, const std::string& pMDBPassword)
         {
             m_AdoDb = new CMDBAdoDb(pDatabase, pMDW, pMDWUserID, pMDWPassword, pMDBPassword);
-			return m_AdoDb;
+            return m_AdoDb;
         }
 
-	private:
-		IAdoDb* m_AdoDb;
+    private:
+        IAdoDb* m_AdoDb;
 
     };
 }
