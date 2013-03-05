@@ -18,9 +18,7 @@ namespace GNSAdoDb{
          * Virtual, so that inheriter can destroy it 
          * using this class' pointer
          */
-        virtual ~SQLAdoDbFactory(){
-            delete m_AdoDb;
-        }
+        virtual ~SQLAdoDbFactory(){}
 
     private:
         /**
@@ -31,12 +29,7 @@ namespace GNSAdoDb{
         virtual IAdoDb* Instance(const std::string& pDatabase, const std::string& pUserName, const std::string& pPassword, 
                                  const std::string& pHost, const std::string& pPort)
         {
-            m_AdoDb = new CSQLAdoDb(pDatabase, pUserName, pPassword, pHost, pPort);
-            return m_AdoDb;
+            return new CSQLAdoDb(pDatabase, pUserName, pPassword, pHost, pPort);
         }
-
-    private:
-        IAdoDb* m_AdoDb;
-
     };
 }

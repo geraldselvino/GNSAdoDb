@@ -12,16 +12,13 @@
 namespace GNSAdoDb{
 
     class MDBAdoDbFactory: public AdoDbFactory
-    : m_AdoDb(NULL)
     {
     public:
         /**
          * Virtual, so that inheriter can destroy it 
          * using this class' pointer
          */
-        virtual ~MDBAdoDbFactory(){
-            delete m_AdoDb;
-        }
+        virtual ~MDBAdoDbFactory(){}
 
     private:
         /**
@@ -32,12 +29,7 @@ namespace GNSAdoDb{
         virtual IAdoDb* Instance(const std::string& pDatabase, const std::string& pMDW, const std::string& pMDWUserID, 
                                  const std::string& pMDWPassword, const std::string& pMDBPassword)
         {
-            m_AdoDb = new CMDBAdoDb(pDatabase, pMDW, pMDWUserID, pMDWPassword, pMDBPassword);
-            return m_AdoDb;
+            return new CMDBAdoDb(pDatabase, pMDW, pMDWUserID, pMDWPassword, pMDBPassword);
         }
-
-    private:
-        IAdoDb* m_AdoDb;
-
     };
 }
