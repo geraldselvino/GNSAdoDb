@@ -40,8 +40,8 @@ namespace GNSAdoDb{
     public:
         bool ConnectToDB();
         bool Disconnect();
-        CDbResult ExecuteQuery(const std::string& pQuery);
-        CDbResult OpenSchema(ADODB::SchemaEnum pSchema);
+        CDbResult* ExecuteQuery(const std::string& pQuery);
+        CDbResult* OpenSchema(ADODB::SchemaEnum pSchema);
         std::string GetErrorMsg();
 
     private:

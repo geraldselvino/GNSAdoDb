@@ -15,7 +15,8 @@ namespace GNSAdoDb{
     class CMDBDbConnectionImpl: public IDbConnection
     {
     public:
-        CMDBDbConnectionImpl(const std::string& pDatabase, const std::string& pMDW, const std::string& pMDWUserID, const std::string& pMDWPassword, const std::string& pMDBPassword);
+        CMDBDbConnectionImpl(const std::string& pDatabase, const std::string& pMDW, const std::string& pMDWUserID, 
+                             const std::string& pMDWPassword, const std::string& pMDBPassword);
         virtual ~CMDBDbConnectionImpl();
 
     public:

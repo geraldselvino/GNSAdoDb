@@ -22,8 +22,8 @@ namespace GNSAdoDb{
     public:
         virtual bool ConnectToDB() = 0;
         virtual bool Disconnect() = 0;
-        virtual CDbResult ExecuteQuery(const std::string& pQuery) = 0;
-        virtual CDbResult OpenSchema(ADODB::SchemaEnum pSchema) = 0;
+        virtual CDbResult* ExecuteQuery(const std::string& pQuery) = 0;
+        virtual CDbResult* OpenSchema(ADODB::SchemaEnum pSchema) = 0;
         virtual std::string GetErrorMsg() = 0;
     };
 }

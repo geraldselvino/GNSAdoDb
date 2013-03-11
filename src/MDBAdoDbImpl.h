@@ -34,15 +34,15 @@ namespace GNSAdoDb{
          * @param pMDBPassword : MS Access password
          */
         CMDBAdoDbImpl(const std::string& pDatabase, const std::string& pMDW, const std::string& pMDWUserID, 
-                  const std::string& pMDWPassword, const std::string& pMDBPassword);
+                      const std::string& pMDWPassword, const std::string& pMDBPassword);
 
         virtual ~CMDBAdoDbImpl();
 
     public:
         bool ConnectToDB();
         bool Disconnect();
-        CDbResult ExecuteQuery(const std::string& pQuery);
-        CDbResult OpenSchema(ADODB::SchemaEnum pSchema);
+        CDbResult* ExecuteQuery(const std::string& pQuery);
+        CDbResult* OpenSchema(ADODB::SchemaEnum pSchema);
         std::string GetErrorMsg();
 
     protected:

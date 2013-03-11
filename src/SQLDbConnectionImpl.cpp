@@ -1,4 +1,3 @@
-#include <stdafx.h> //include to allow precompiled header in Visual Studio
 #include "SQLDbConnection.h"
 #include "SQLDbConnectionImpl.h"
 
@@ -38,7 +37,7 @@ std::string GNSAdoDb::CSQLDbConnection::GetUser()
  */
 
 GNSAdoDb::CSQLDbConnectionImpl::CSQLDbConnectionImpl(const std::string& pDatabase, const std::string& pUserName, const std::string& pPassword, 
-                                           const std::string& pHost, const std::string& pPort)
+                                                     const std::string& pHost, const std::string& pPort)
 : m_Database(pDatabase),
   m_UserName(pUserName),
   m_Password(pPassword),
@@ -55,18 +54,18 @@ std::string GNSAdoDb::CSQLDbConnectionImpl::MakeConnStr()
 {
     m_ConnectionString = "Provider=sqloledb;Persist Security Info=true;Initial Catalog=" + m_Database + 
                          ";User ID=" + m_UserName + ";Password=" + m_Password + ";Data Source=" + m_Host;
-    if(m_Port.length()>0){m_ConnectionString += "," + m_Port;}
+    if(m_Port.length()>0){ m_ConnectionString += "," + m_Port; }
 
     return m_ConnectionString;
 }
 
 std::string GNSAdoDb::CSQLDbConnectionImpl::GetPass()
 {
-    return  m_UserName;
+    return  m_Password;
 }
 
 
 std::string GNSAdoDb::CSQLDbConnectionImpl::GetUser()
 {
-    return  m_Password;
+    return  m_UserName;
 }

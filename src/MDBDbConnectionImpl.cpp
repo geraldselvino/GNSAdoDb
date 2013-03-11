@@ -1,4 +1,3 @@
-#include <stdafx.h> //include to allow precompiled header in Visual Studio
 #include "MDBDbConnection.h"
 #include "MDBDbConnectionImpl.h"
 
@@ -37,7 +36,7 @@ std::string GNSAdoDb::CMDBDbConnection::GetUser()
  */
 
 GNSAdoDb::CMDBDbConnectionImpl::CMDBDbConnectionImpl(const std::string& pDatabase, const std::string& pMDW, const std::string& pMDWUserID, 
-                                           const std::string& pMDWPassword, const std::string& pMDBPassword)
+                                                     const std::string& pMDWPassword, const std::string& pMDBPassword)
 : m_Database(pDatabase),
   m_MDW(pMDW),
   m_MDWUserID(pMDWUserID),
@@ -53,21 +52,21 @@ GNSAdoDb::CMDBDbConnectionImpl::~CMDBDbConnectionImpl()
 std::string GNSAdoDb::CMDBDbConnectionImpl::MakeConnStr()
 {
     m_ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + m_Database;
-    if(m_MDW.length()>0){m_ConnectionString+=";Jet OLEDB: System Database=" + m_MDW;}
-    if(m_MDWUserID.length()>0){m_ConnectionString+=";User Id=" + m_MDWUserID;}
-    if(m_MDWPassword.length()>0){m_ConnectionString+=";Password=" + m_MDWPassword;}
-    if(m_MDBPassword.length()>0){m_ConnectionString+=";Jet OLEDB: Database Password=" + m_MDBPassword;}
+    if(m_MDW.length()>0){ m_ConnectionString += ";Jet OLEDB: System Database=" + m_MDW; }
+    if(m_MDWUserID.length()>0){ m_ConnectionString += ";User Id=" + m_MDWUserID; }
+    if(m_MDWPassword.length()>0){ m_ConnectionString += ";Password=" + m_MDWPassword; }
+    if(m_MDBPassword.length()>0){ m_ConnectionString += ";Jet OLEDB: Database Password=" + m_MDBPassword; }
 
     return m_ConnectionString;
 }
 
 std::string GNSAdoDb::CMDBDbConnectionImpl::GetPass()
 {
-    return  m_MDWUserID;
+    return  m_MDWPassword;
 }
 
 
 std::string GNSAdoDb::CMDBDbConnectionImpl::GetUser()
 {
-    return  m_MDWPassword;
+    return  m_MDWUserID;
 }

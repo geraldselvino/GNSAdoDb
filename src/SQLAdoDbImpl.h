@@ -34,15 +34,15 @@ namespace GNSAdoDb{
          * @param pPort : Sql Server port
          */
         CSQLAdoDbImpl(const std::string& pDatabase, const std::string& pUserName, const std::string& pPassword, 
-                  const std::string& pHost, const std::string& pPort);
+                      const std::string& pHost, const std::string& pPort);
 
         virtual ~CSQLAdoDbImpl();
 
     public:
         bool ConnectToDB();
         bool Disconnect();
-        CDbResult ExecuteQuery(const std::string& pQuery);
-        CDbResult OpenSchema(ADODB::SchemaEnum pSchema);
+        CDbResult* ExecuteQuery(const std::string& pQuery);
+        CDbResult* OpenSchema(ADODB::SchemaEnum pSchema);
         std::string GetErrorMsg();
 
     protected:

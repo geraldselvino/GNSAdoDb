@@ -16,7 +16,7 @@ namespace GNSAdoDb{
     {
     public:
         CSQLDbConnectionImpl(const std::string& pDatabase, const std::string& pUserName, const std::string& pPassword, 
-                         const std::string& pHost, const std::string& pPort);
+                             const std::string& pHost, const std::string& pPort);
         virtual ~CSQLDbConnectionImpl();
 
     public:

@@ -1,4 +1,3 @@
-#include <stdafx.h> //include to allow precompiled header in Visual Studio
 #include "DbResult.h"
 
 GNSAdoDb::CDbResult::CDbResult()
@@ -59,7 +58,6 @@ std::string GNSAdoDb::CDbResult::Get(const std::string& FieldName)
         _bstr_t l_bstr = static_cast<_bstr_t>(l_Value.GetVARIANT());
 
         std::string l_return(static_cast<const char*>(l_bstr));
-        //l_return.Format("%s", (LPCTSTR)l_bstr);
         return l_return;
     }
     catch(_com_error &e){
@@ -75,7 +73,7 @@ int GNSAdoDb::CDbResult::IsEof()
         return -1;
     }
     try{
-        l_rseof = m_RecordSet->Get__EOF()/*->EndOfFile*/;
+        l_rseof = m_RecordSet->Get__EOF();
     }
     catch(_com_error &e){
         m_ErrorMessage = reinterpret_cast<const char*>(e.ErrorMessage());
@@ -162,7 +160,7 @@ bool GNSAdoDb::CDbResult::TransformToVector(std::vector<std::vector<std::string>
         HRESULT hr = SafeArrayGetUBound(l_collection.parray, 2, &l_Ubound); 
 
         if (hr == S_OK){
-            if ((GetRecordCount()>l_Ubound + 1) && (!(m_RecordSet->Get__EOF()/*->EndOfFile*/))){
+            if ((GetRecordCount()>l_Ubound + 1) && (!(m_RecordSet->Get__EOF()))){
                 return false;
             }
             else{

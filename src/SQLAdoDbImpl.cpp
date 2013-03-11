@@ -1,4 +1,3 @@
-#include <stdafx.h> //include to allow precompiled header in Visual Studio
 #include "SQLAdoDb.h"
 #include "SQLAdoDbImpl.h"
 #include "SQLDbConnection.h"
@@ -29,12 +28,12 @@ bool GNSAdoDb::CSQLAdoDb::Disconnect()
     return pImplSQLAdoDb->Disconnect();
 }
 
-GNSAdoDb::CDbResult GNSAdoDb::CSQLAdoDb::ExecuteQuery(const std::string& pQuery)
+GNSAdoDb::CDbResult* GNSAdoDb::CSQLAdoDb::ExecuteQuery(const std::string& pQuery)
 {
     return pImplSQLAdoDb->ExecuteQuery(pQuery);
 }
 
-GNSAdoDb::CDbResult GNSAdoDb::CSQLAdoDb::OpenSchema(ADODB::SchemaEnum pSchema)
+GNSAdoDb::CDbResult* GNSAdoDb::CSQLAdoDb::OpenSchema(ADODB::SchemaEnum pSchema)
 {
     return pImplSQLAdoDb->OpenSchema(pSchema);
 }
@@ -49,7 +48,7 @@ std::string GNSAdoDb::CSQLAdoDb::GetErrorMsg()
  */
 
 GNSAdoDb::CSQLAdoDbImpl::CSQLAdoDbImpl(const std::string& pDatabase, const std::string& pUserName, const std::string& pPassword, 
-                             const std::string& pHost, const std::string& pPort)
+                                       const std::string& pHost, const std::string& pPort)
 : m_Connection(NULL),
   m_ConnectionInfo(new CSQLDbConnection(pDatabase, pUserName, pPassword, pHost, pPort))
 {
@@ -64,56 +63,66 @@ GNSAdoDb::CSQLAdoDbImpl::~CSQLAdoDbImpl()
 
 bool GNSAdoDb::CSQLAdoDbImpl::ConnectToDB()
 {
+    bool ret = true;
+
     try{
-        HRESULT l_hresult;
-        l_hresult = m_Connection.CreateInstance( __uuidof( ADODB::Connection ) );
-        m_Connection->CursorLocation = ADODB::adUseClient;
-        m_Connection->Open(m_ConnectionInfo->MakeConnStr().c_str(), m_ConnectionInfo->GetUser().c_str(), m_ConnectionInfo->GetPass().c_str(), NULL);
+        HRESULT l_hresult = m_Connection.CreateInstance(__uuidof(ADODB::Connection));
+        if(l_hresult == S_OK){
+            m_Connection->CursorLocation = ADODB::adUseClient;
+            m_Connection->Open(m_ConnectionInfo->MakeConnStr().c_str(), m_ConnectionInfo->GetUser().c_str(), m_ConnectionInfo->GetPass().c_str(), NULL);
+        }
+        else{
+            ret = false;
+        }
     }
     catch(_com_error &e){
         m_ErrorMessage = reinterpret_cast<const char*>(e.ErrorMessage());
-        return false;
+        ret = false;
     }
 
-    return true;
+    return ret;
 }
 
 bool GNSAdoDb::CSQLAdoDbImpl::Disconnect()
 {
+    bool ret = true;
+
     try{
         m_Connection->Close();
     }
     catch(_com_error &e){
         m_ErrorMessage = reinterpret_cast<const char*>(e.ErrorMessage());
-        return false;
+        ret = false;
     }
 
-    return true;
+    return ret;
 }
 
-GNSAdoDb::CDbResult GNSAdoDb::CSQLAdoDbImpl::ExecuteQuery(const std::string& pQuery)
+GNSAdoDb::CDbResult* GNSAdoDb::CSQLAdoDbImpl::ExecuteQuery(const std::string& pQuery)
 {
-    CDbResult t_resultset;
+    CDbResult* t_resultset = new CDbResult();
     try{
-        t_resultset.SetRecordset(m_Connection->Execute(pQuery.c_str(),NULL,1));
+        t_resultset->SetRecordset(m_Connection->Execute(pQuery.c_str(),NULL,1));
     }
     catch(_com_error &e){
         m_ErrorMessage = reinterpret_cast<const char*>(e.ErrorMessage());
-        return NULL;
+        delete t_resultset;
+        t_resultset = NULL;
     }
 
     return t_resultset;
 }
 
-GNSAdoDb::CDbResult GNSAdoDb::CSQLAdoDbImpl::OpenSchema(ADODB::SchemaEnum pSchema)
+GNSAdoDb::CDbResult* GNSAdoDb::CSQLAdoDbImpl::OpenSchema(ADODB::SchemaEnum pSchema)
 {
-    CDbResult t_resultset;
+    CDbResult* t_resultset = new CDbResult();
     try{
-        t_resultset.SetRecordset(m_Connection->OpenSchema(pSchema));
+        t_resultset->SetRecordset(m_Connection->OpenSchema(pSchema));
     }
     catch(_com_error &e){
         m_ErrorMessage = reinterpret_cast<const char*>(e.ErrorMessage());
-        return NULL;
+        delete t_resultset;
+        t_resultset = NULL;
     }
 
     return t_resultset;
