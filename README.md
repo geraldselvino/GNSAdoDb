@@ -12,7 +12,7 @@ MSADO type library (included).
 
 License
 ===============================
-Copyright (c) 2013, Gerald Selvino <geraldsv@outlook.com>
+Copyright (c) 2009, Gerald Selvino <geraldsv@outlook.com>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
