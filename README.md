@@ -1,8 +1,8 @@
 GNSAdoDb [C++ ActiveX Data Object wrapper]
 ==========================================
 Library that abstracts and simplify ADO programming in native C++,
-making it as easy as ADO programming in Visual Basic 6. It only supports 
-MS Access(2003 and below) and MS SQL Server(I have only tested 2005 edition) currently, of course it can be easily modified to support more database providers.
+making it as easy as ADO programming in Visual Basic. It currently supports 
+MS Access(2003 and below) and MS SQL Server(I have only tested 2005 edition) currently, of course it can be easily extended to support more database providers.
 
 Requirement
 ===============================
