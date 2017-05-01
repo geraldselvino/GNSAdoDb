@@ -1,6 +1,6 @@
 /**********************************************************
-* Copyright (c) 2013, Gerald Selvino <geraldsv@outlook.com>
-* All rights reserved.
+* Copyright (c) 2009, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
 *
 * This is the implementation class of CMDBDbConnection, used
 * by CMDBAdoDb(Impl) to connect to Microsof Access database

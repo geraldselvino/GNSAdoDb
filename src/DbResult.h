@@ -1,6 +1,6 @@
 /**********************************************************
-* Copyright (c) 2013, Gerald Selvino <geraldsv@outlook.com>
-* All rights reserved.
+* Copyright (c) 2009, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
 *
 * This class encapsulates the COM Recordset, used to contain
 * the return value of the ExecuteQuery in AdoDb. It exposed

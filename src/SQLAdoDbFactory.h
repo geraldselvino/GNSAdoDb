@@ -1,6 +1,6 @@
 /**********************************************************
-* Copyright (c) 2013, Gerald Selvino <geraldsv@outlook.com>
-* All rights reserved.
+* Copyright (c) 2009, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
 *
 * This is a factory class implementation for CSQLAdoDb
 ***********************************************************/

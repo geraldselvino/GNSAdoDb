@@ -1,6 +1,6 @@
 /**********************************************************
-* Copyright (c) 2013, Gerald Selvino <geraldsv@outlook.com>
-* All rights reserved.
+* Copyright (c) 2009, Gerald Selvino
+* <gerald.selvino@protonmail.com> All rights reserved.
 *
 * Abstract Factory class, use as a base class for the 
 * implementation factories.
