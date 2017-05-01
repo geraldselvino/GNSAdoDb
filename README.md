@@ -12,39 +12,39 @@ Sample Usage
 ===============================
 **Note:** Check the unit test solution(test/gtest/msvc/gtest.sln) to see more usage coverage
 
-*[SQL server]  
-//initialize  
-GNSAdoDb::IAdoDb* adodb = GNSAdoDb::GNSAdoDbFactory::getSqlAdoDb("dbname", "user", "pass", "host", "port");  
-//connect  
+**[SQL server]**  
+*//initialize*   
+```GNSAdoDb::IAdoDb* adodb = GNSAdoDb::GNSAdoDbFactory::getSqlAdoDb("dbname", "user", "pass", "host", "port");  
+*//connect*  
 adodb->ConnectToDB();  
-//standard query  
+*//standard query*  
 GNSAdoDb::CDbResult* dbresult = NULL;  
 dbresult = adodb->ExecuteQuery("select * from testtable");  
 int recCount = dbresult->GetRecordCount();  
 std::cout << dbresult->Get("fname");   
-//schema info query  
+*//schema info query*  
 GNSAdoDb::CDbResult* dbresultschema = NULL;  
 dbresultschema = adodb->OpenSchema(ADODB::adSchemaColumns);  
 int recCount = dbresultschema->GetRecordCount();  
-//close connection  
+*//close connection*  
 bool ret = adodb->Disconnect();  
   
-[MS Access]  
-//initialize  
+**[MS Access]**  
+*//initialize*  
 GNSAdoDb::IAdoDb* adodb = GNSAdoDb::GNSAdoDbFactory::getMdbAdoDb("../test/test.mdb");  
-//connect  
+*//connect*  
 adodb->ConnectToDB();  
-//standard query  
+*//standard query*  
 GNSAdoDb::CDbResult* dbresult = NULL;  
 dbresult = adodb->ExecuteQuery("select * from testtable");  
 int recCount = dbresult->GetRecordCount();  
 std::cout << dbresult->Get("fname");  
-//schema info query  
+*//schema info query*  
 GNSAdoDb::CDbResult* dbresultschema = NULL;  
 dbresultschema = adodb->OpenSchema(ADODB::adSchemaColumns);  
 int recCount = dbresultschema->GetRecordCount();  
-//close connection  
-bool = adodb->Disconnect();  *
+*//close connection*  
+bool = adodb->Disconnect();```  
 
 License
 ===============================
