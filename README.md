@@ -12,7 +12,7 @@ Sample Usage
 ===============================
 **Note:** Check the unit test solution(test/gtest/msvc/gtest.sln) to see more usage coverage
 ```c++
-[SQL server]
+//[SQL server]
 //initialize  
 GNSAdoDb::IAdoDb* adodb = GNSAdoDb::GNSAdoDbFactory::getSqlAdoDb("dbname", "user", "pass", "host", "port");
 //connect
@@ -29,7 +29,7 @@ int recCount = dbresultschema->GetRecordCount();
 //close connection
 bool ret = adodb->Disconnect();
   
-[MS Access]
+//[MS Access]
 //initialize
 GNSAdoDb::IAdoDb* adodb = GNSAdoDb::GNSAdoDbFactory::getMdbAdoDb("../test/test.mdb");
 //connect
@@ -44,7 +44,8 @@ GNSAdoDb::CDbResult* dbresultschema = NULL;
 dbresultschema = adodb->OpenSchema(ADODB::adSchemaColumns);
 int recCount = dbresultschema->GetRecordCount();
 //close connection
-bool = adodb->Disconnect();```
+bool = adodb->Disconnect();
+```
 
 License
 ===============================
