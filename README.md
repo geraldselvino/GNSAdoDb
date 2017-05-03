@@ -5,8 +5,9 @@ making it as easy as ADO programming in Visual Basic.
 
 Requirement
 ===============================
-MSADO type library (included)  
-Windows
+Visual Studio  
+MSADO type library (included in type_library folder)  
+Windows  
 
 Sample Usage
 ===============================
