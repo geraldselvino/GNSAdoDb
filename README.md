@@ -4,13 +4,13 @@ Library that abstracts and simplify ADO programming in native C++,
 making it as easy as ADO programming in Visual Basic.
 
 Requirement
-===============================
+===========
 Visual Studio  
 MSADO type library (included in type_library folder)  
 Windows  
 
 Sample Usage
-===============================
+============
 **Note:** Check the unit test solution(test/gtest/msvc/gtest.sln) to see more usage coverage
 ```c++
 //[SQL server]
@@ -49,7 +49,7 @@ bool = adodb->Disconnect();
 ```
 
 License
-===============================
+=======
 Copyright (c) 2009, Gerald Selvino <gerald.selvino@protonmail.com>
 All rights reserved.
 
